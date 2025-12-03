@@ -1,7 +1,7 @@
-package user.domain;
+package main.java.org.fastcampus.user.domain;
 
 import java.util.Objects;
-import common.domain.PositiveIntegerCounter;
+import main.java.org.fastcampus.common.domain.PositiveIntegerCounter;
 
 public class User {
     private final long id;

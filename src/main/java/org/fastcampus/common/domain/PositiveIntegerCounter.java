@@ -1,4 +1,4 @@
-package common.domain;
+package main.java.org.fastcampus.common.domain;
 
 public class PositiveIntegerCounter {
     private int count;

@@ -1,9 +1,9 @@
-package post.domain;
+package main.java.org.fastcampus.post.domain;
 
-import common.domain.PositiveIntegerCounter;
-import post.domain.contant.PostContent;
-import post.domain.contant.PostPublicationState;
-import user.domain.User;
+import main.java.org.fastcampus.common.domain.PositiveIntegerCounter;
+import main.java.org.fastcampus.post.domain.contant.PostContent;
+import main.java.org.fastcampus.post.domain.contant.PostPublicationState;
+import main.java.org.fastcampus.user.domain.User;
 
 public class Post {
 

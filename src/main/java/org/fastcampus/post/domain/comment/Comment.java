@@ -1,9 +1,9 @@
-package post.domain.comment;
+package main.java.org.fastcampus.post.domain.comment;
 
-import common.domain.PositiveIntegerCounter;
-import post.domain.Post;
-import post.domain.contant.Content;
-import user.domain.User;
+import main.java.org.fastcampus.common.domain.PositiveIntegerCounter;
+import main.java.org.fastcampus.post.domain.Post;
+import main.java.org.fastcampus.post.domain.contant.Content;
+import main.java.org.fastcampus.user.domain.User;
 
 public class Comment {
 

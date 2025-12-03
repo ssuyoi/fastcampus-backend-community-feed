@@ -1,4 +1,4 @@
-package post.domain.contant;
+package main.java.org.fastcampus.post.domain.contant;
 
 public class CommentContent extends Content {
 
