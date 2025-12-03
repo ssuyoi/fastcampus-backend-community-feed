@@ -10,6 +10,10 @@ public class User {
     private final PositiveIntegerCounter followerCounter;
 
     public User(long id, UserInfo userInfo) {
+        if(userInfo == null) {
+            throw new IllegalArgumentException();
+        }
+
         this.id = id;
         this.info = userInfo;
         this.followingCounter = new PositiveIntegerCounter();
@@ -22,7 +26,7 @@ public class User {
         }
 
         followingCounter.increase();
-        increaseFollowerCounter();
+        targetUser.increaseFollowerCounter();
 
     }
 
@@ -32,7 +36,7 @@ public class User {
         }
 
         followingCounter.decrease();
-        decreaseFollowerCounter();
+        targetUser.decreaseFollowerCounter();
     }
 
     private void increaseFollowerCounter() {
@@ -60,4 +64,13 @@ public class User {
     public long getId() {
         return id;
     }
+
+    public int followerCount() {
+        return followerCounter.getCount();
+    }
+
+    public int followingCount() {
+        return followingCounter.getCount();
+    }
+
 }
