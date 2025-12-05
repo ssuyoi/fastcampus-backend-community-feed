@@ -9,7 +9,7 @@ public class User {
     private final PositiveIntegerCounter followingCounter;
     private final PositiveIntegerCounter followerCounter;
 
-    public User(long id, UserInfo userInfo) {
+    public User(Long id, UserInfo userInfo) {
         if(userInfo == null) {
             throw new IllegalArgumentException();
         }
