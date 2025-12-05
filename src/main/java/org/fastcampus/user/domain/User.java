@@ -4,7 +4,7 @@ import java.util.Objects;
 import main.java.org.fastcampus.common.domain.PositiveIntegerCounter;
 
 public class User {
-    private final long id;
+    private final Long id;
     private final UserInfo info;
     private final PositiveIntegerCounter followingCounter;
     private final PositiveIntegerCounter followerCounter;
@@ -61,8 +61,12 @@ public class User {
         return Objects.hashCode(id);
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
+    }
+
+    public UserInfo getInfo() {
+        return info;
     }
 
     public int followerCount() {
