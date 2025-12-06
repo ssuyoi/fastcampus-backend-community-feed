@@ -23,6 +23,10 @@ public class Post {
         return new Post(id, author, new PostContent(content), PostPublicationState.PUBLIC);
     }
 
+    public Post(Long id, User author, Content content) {
+        this(id, author, content, PostPublicationState.PUBLIC);
+    }
+
     public Post(Long id, User author, Content content, PostPublicationState state) {
 
         if(author==null) {
@@ -34,7 +38,7 @@ public class Post {
         //this.authorId = author.getId();
         this.content = content;
         this.likeCount = new PositiveIntegerCounter();
-        this.state = PostPublicationState.PUBLIC;
+        this.state = state;
     }
 
     public void like (User user) {
@@ -62,5 +66,17 @@ public class Post {
 
     public String getContent() {
         return content.getContentText();
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public User getAuthor() {
+        return author;
+    }
+
+    public Content getContentObject() {
+        return content;
     }
 }

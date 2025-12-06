@@ -53,4 +53,27 @@ public class Comment {
         }
         this.content.updateContent(updateContent);
     }
+
+    public String getContent() {
+        return content.getContentText();
+    }
+    public Long getId() {
+        return id;
+    }
+
+    public Post getPost() {
+        return post;
+    }
+
+    public User getAuthor() {
+        return author;
+    }
+
+    public Content getContentObject() {
+        return content;
+    }
+
+    public int getLikeCount() {
+        return likeCount.getCount();
+    }
 }
