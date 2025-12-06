@@ -1,6 +1,7 @@
 package main.java.org.fastcampus.post.domain;
 
 import main.java.org.fastcampus.common.domain.PositiveIntegerCounter;
+import main.java.org.fastcampus.post.domain.contant.Content;
 import main.java.org.fastcampus.post.domain.contant.PostContent;
 import main.java.org.fastcampus.post.domain.contant.PostPublicationState;
 import main.java.org.fastcampus.user.domain.User;
@@ -10,11 +11,19 @@ public class Post {
     private final Long id;
     private final User author;
     //private final Long authorId;
-    private final PostContent content;
+    private final Content content;
     private final PositiveIntegerCounter likeCount;
     private PostPublicationState state;
 
-    public Post(Long id, User author, PostContent content) {
+    public static Post createPost(Long id, User author, String content, PostPublicationState state) {
+        return new Post(id, author, new PostContent(content), state);
+    }
+
+    public static Post createDefaultPost(Long id, User author, String content) {
+        return new Post(id, author, new PostContent(content), PostPublicationState.PUBLIC);
+    }
+
+    public Post(Long id, User author, Content content, PostPublicationState state) {
 
         if(author==null) {
             throw new IllegalArgumentException();

@@ -2,6 +2,7 @@ package main.java.org.fastcampus.post.domain.comment;
 
 import main.java.org.fastcampus.common.domain.PositiveIntegerCounter;
 import main.java.org.fastcampus.post.domain.Post;
+import main.java.org.fastcampus.post.domain.contant.CommentContent;
 import main.java.org.fastcampus.post.domain.contant.Content;
 import main.java.org.fastcampus.user.domain.User;
 
@@ -12,6 +13,10 @@ public class Comment {
     private final User author;
     private final Content content;
     private final PositiveIntegerCounter likeCount;
+
+    public static Comment createComment(Post post, User author, String content) {
+        return new Comment(null, post, author, new CommentContent(content));
+    }
 
     public Comment(Long id, Post post, User author, Content content) {
         if(author == null) {
