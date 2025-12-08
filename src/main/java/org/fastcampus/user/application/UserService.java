@@ -1,9 +1,9 @@
-package main.java.org.fastcampus.user.application;
+package org.fastcampus.user.application;
 
-import main.java.org.fastcampus.user.application.Interfaces.UserRepository;
-import main.java.org.fastcampus.user.application.dto.CreateUserRequestDto;
-import main.java.org.fastcampus.user.domain.User;
-import main.java.org.fastcampus.user.domain.UserInfo;
+import org.fastcampus.user.application.Interfaces.UserRepository;
+import org.fastcampus.user.application.dto.CreateUserRequestDto;
+import org.fastcampus.user.domain.User;
+import org.fastcampus.user.domain.UserInfo;
 
 public class UserService {
     private final UserRepository userRepository;

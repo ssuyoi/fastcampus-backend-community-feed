@@ -1,14 +1,11 @@
-package test.java.org.fastcampus.post.domain;
+package org.fastcampus.post.domain;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import main.java.org.fastcampus.post.domain.Post;
-import main.java.org.fastcampus.post.domain.contant.PostContent;
-import main.java.org.fastcampus.post.domain.contant.PostPublicationState;
-import main.java.org.fastcampus.user.domain.User;
-import main.java.org.fastcampus.user.domain.UserInfo;
+import org.fastcampus.post.domain.contant.PostPublicationState;
+import org.fastcampus.user.domain.User;
+import org.fastcampus.user.domain.UserInfo;
 import org.junit.jupiter.api.Test;
 
 class PostTest {
@@ -17,7 +14,7 @@ class PostTest {
     private final User user =  new User(1L, info);
     private final User otherUser = new User(2L, info);
 
-    private final Post post = new Post(1L, user, new PostContent("content"));
+    private final Post post = Post.createDefaultPost(1L, user, "content");
 
     @Test
     void givenPostCreated_whenLike_thenLikeCountShouldBe1() {

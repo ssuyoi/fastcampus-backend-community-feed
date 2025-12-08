@@ -1,6 +1,6 @@
-package main.java.org.fastcampus.user.application.Interfaces;
+package org.fastcampus.user.application.Interfaces;
 
-import main.java.org.fastcampus.user.domain.User;
+import org.fastcampus.user.domain.User;
 
 public interface UserRelationRepository {
     boolean isAlreadyFollow(User user, User targetUser);

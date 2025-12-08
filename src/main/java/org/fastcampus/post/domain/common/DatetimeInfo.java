@@ -1,4 +1,4 @@
-package main.java.org.fastcampus.post.domain.common;
+package org.fastcampus.post.domain.common;
 
 import java.time.LocalDateTime;
 

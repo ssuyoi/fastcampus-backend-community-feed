@@ -1,9 +1,9 @@
-package test.java.org.fastcampus.post.domain.content;
+package org.fastcampus.post.domain.content;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import main.java.org.fastcampus.post.domain.contant.PostContent;
+import org.fastcampus.post.domain.contant.PostContent;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.NullAndEmptySource;

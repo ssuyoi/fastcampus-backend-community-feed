@@ -1,4 +1,4 @@
-package main.java.org.fastcampus.post.domain.contant;
+package org.fastcampus.post.domain.contant;
 
 public enum PostPublicationState {
     PUBLIC,

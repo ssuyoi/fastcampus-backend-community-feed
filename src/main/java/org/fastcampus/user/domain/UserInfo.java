@@ -1,4 +1,4 @@
-package main.java.org.fastcampus.user.domain;
+package org.fastcampus.user.domain;
 
 public class UserInfo {
 

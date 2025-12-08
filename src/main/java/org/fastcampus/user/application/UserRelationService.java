@@ -1,8 +1,8 @@
-package main.java.org.fastcampus.user.application;
+package org.fastcampus.user.application;
 
-import main.java.org.fastcampus.user.application.Interfaces.UserRelationRepository;
-import main.java.org.fastcampus.user.application.dto.FollowUserRequestDto;
-import main.java.org.fastcampus.user.domain.User;
+import org.fastcampus.user.application.Interfaces.UserRelationRepository;
+import org.fastcampus.user.application.dto.FollowUserRequestDto;
+import org.fastcampus.user.domain.User;
 
 public class UserRelationService {
     private final UserService userService;

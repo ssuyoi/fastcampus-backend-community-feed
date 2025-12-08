@@ -1,9 +1,9 @@
-package test.java.org.fastcampus.user.domain;
+package org.fastcampus.user.domain;
 
-import main.java.org.fastcampus.user.domain.UserInfo;
-import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+
+import org.junit.jupiter.api.Test;
 
 class UserInfoTest {
 

@@ -1,10 +1,10 @@
-package test.java.org.fastcampus.user.repository;
+package org.fastcampus.user.repository;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
-import main.java.org.fastcampus.user.application.Interfaces.UserRepository;
-import main.java.org.fastcampus.user.domain.User;
+import org.fastcampus.user.application.Interfaces.UserRepository;
+import org.fastcampus.user.domain.User;
 
 public class FakeUserRepository implements UserRepository {
 

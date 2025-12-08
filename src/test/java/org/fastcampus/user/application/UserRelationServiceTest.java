@@ -1,26 +1,21 @@
-package test.java.org.fastcampus.user.application;
+package org.fastcampus.user.application;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import main.java.org.fastcampus.user.application.Interfaces.UserRelationRepository;
-import main.java.org.fastcampus.user.application.Interfaces.UserRepository;
-import main.java.org.fastcampus.user.application.UserRelationService;
-import main.java.org.fastcampus.user.application.UserService;
-import main.java.org.fastcampus.user.application.dto.CreateUserRequestDto;
-import main.java.org.fastcampus.user.application.dto.FollowUserRequestDto;
-import main.java.org.fastcampus.user.domain.User;
+import org.fastcampus.fake.FakeObjectFactory;
+import org.fastcampus.user.application.dto.CreateUserRequestDto;
+import org.fastcampus.user.application.dto.FollowUserRequestDto;
+import org.fastcampus.user.domain.User;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import test.java.org.fastcampus.user.repository.FakeUserRelationRepository;
-import test.java.org.fastcampus.user.repository.FakeUserRepository;
 
-class UserRelationServiceTest {
+class
+UserRelationServiceTest {
 
-    private UserRepository userRepository = new FakeUserRepository();
-    private UserService userService = new UserService(userRepository);
-    private UserRelationRepository userRelationRepository = new FakeUserRelationRepository();
-    private final UserRelationService userRelationService = new UserRelationService(userService, userRelationRepository);
+    private final UserService userService = FakeObjectFactory.getUserService();
+    private final UserRelationService userRelationService = FakeObjectFactory.getUserRelationService();
 
     private User user1;
     private User user2;

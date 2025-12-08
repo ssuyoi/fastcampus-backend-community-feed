@@ -1,6 +1,6 @@
-package main.java.org.fastcampus.post.domain.contant;
+package org.fastcampus.post.domain.contant;
 
-import main.java.org.fastcampus.post.domain.common.DatetimeInfo;
+import org.fastcampus.post.domain.common.DatetimeInfo;
 
 public abstract class Content {
     protected String contentText;

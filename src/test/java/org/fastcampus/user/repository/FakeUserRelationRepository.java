@@ -1,11 +1,12 @@
-package test.java.org.fastcampus.user.repository;
+package org.fastcampus.user.repository;
 
 import java.util.HashSet;
 import java.util.Set;
-import main.java.org.fastcampus.user.application.Interfaces.UserRelationRepository;
-import main.java.org.fastcampus.user.domain.User;
+import org.fastcampus.user.application.Interfaces.UserRelationRepository;
+import org.fastcampus.user.domain.User;
 
-public class FakeUserRelationRepository implements UserRelationRepository {
+public class
+FakeUserRelationRepository implements UserRelationRepository {
 
     private final Set<Relation> store = new HashSet<>();
 
