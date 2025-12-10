@@ -1,4 +1,4 @@
-package org.fastcampus.user.application.repository.entity;
+package org.fastcampus.user.repository.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

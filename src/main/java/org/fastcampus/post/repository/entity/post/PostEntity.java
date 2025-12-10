@@ -18,7 +18,7 @@ import org.fastcampus.common.repository.entity.TimeBaseEntity;
 import org.fastcampus.post.domain.Post;
 import org.fastcampus.post.domain.contant.PostContent;
 import org.fastcampus.post.domain.contant.PostPublicationState;
-import org.fastcampus.user.application.repository.entity.UserEntity;
+import org.fastcampus.user.repository.entity.UserEntity;
 
 @Entity
 @Table(name = "community_post")

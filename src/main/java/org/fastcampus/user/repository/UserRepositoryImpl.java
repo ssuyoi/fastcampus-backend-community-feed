@@ -1,9 +1,9 @@
-package org.fastcampus.user.application.repository;
+package org.fastcampus.user.repository;
 
 import lombok.RequiredArgsConstructor;
 import org.fastcampus.user.application.Interfaces.UserRepository;
-import org.fastcampus.user.application.repository.entity.UserEntity;
-import org.fastcampus.user.application.repository.jpa.JpaUserRepository;
+import org.fastcampus.user.repository.entity.UserEntity;
+import org.fastcampus.user.repository.jpa.JpaUserRepository;
 import org.fastcampus.user.domain.User;
 import org.springframework.stereotype.Repository;
 

@@ -16,7 +16,7 @@ import org.fastcampus.common.domain.PositiveIntegerCounter;
 import org.fastcampus.common.repository.entity.TimeBaseEntity;
 import org.fastcampus.post.domain.comment.Comment;
 import org.fastcampus.post.repository.entity.post.PostEntity;
-import org.fastcampus.user.application.repository.entity.UserEntity;
+import org.fastcampus.user.repository.entity.UserEntity;
 
 @Entity
 @Table(name = "community_comment")
