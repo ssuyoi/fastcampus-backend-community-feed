@@ -1,8 +1,8 @@
-package org.fastcampus.user.application.repository.jpa;
+package org.fastcampus.user.repository.jpa;
 
 import java.util.List;
 import org.fastcampus.user.application.dto.GetUserListResponseDto;
-import org.fastcampus.user.application.repository.entity.UserEntity;
+import org.fastcampus.user.repository.entity.UserEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 

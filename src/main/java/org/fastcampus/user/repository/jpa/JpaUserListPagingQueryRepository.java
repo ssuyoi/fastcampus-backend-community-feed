@@ -1,4 +1,4 @@
-package org.fastcampus.user.application.repository.jpa;
+package org.fastcampus.user.repository.jpa;
 
 import com.querydsl.core.types.Projections;
 import com.querydsl.core.types.dsl.BooleanExpression;
@@ -6,8 +6,8 @@ import com.querydsl.jpa.impl.JPAQueryFactory;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.fastcampus.user.application.dto.GetUserListResponseDto;
-import org.fastcampus.user.application.repository.entity.QUserEntity;
-import org.fastcampus.user.application.repository.entity.QUserRelationEntity;
+import org.fastcampus.user.repository.entity.QUserEntity;
+import org.fastcampus.user.repository.entity.QUserRelationEntity;
 import org.springframework.stereotype.Repository;
 
 @Repository
