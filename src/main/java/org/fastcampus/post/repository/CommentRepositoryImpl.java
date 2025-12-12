@@ -27,7 +27,11 @@ public class CommentRepositoryImpl implements CommentRepository {
     public Comment save(Comment comment) {
         Post targetPost = comment.getPost();
         CommentEntity entity = jpaCommentRepository.save(new CommentEntity(comment));
-        jpaPostRepository.increaseCommentCounter(targetPost.getId());
+
+        if(comment.getId() != null) {
+            jpaCommentRepository.updateCommentEntity(entity);
+            return comment;
+        }
         return entity.toComment();
     }
 }

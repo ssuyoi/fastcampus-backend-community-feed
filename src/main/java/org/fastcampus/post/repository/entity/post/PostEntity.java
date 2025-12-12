@@ -43,8 +43,10 @@ public class PostEntity extends TimeBaseEntity {
 
     private Integer likeCount;
 
+    // 엔티티로 관리
     @ColumnDefault("0")
     private int commentCount;
+
 
     public PostEntity(Post post) {
         this.id = post.getId();
