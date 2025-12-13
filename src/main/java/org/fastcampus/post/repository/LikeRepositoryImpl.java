@@ -1,13 +1,12 @@
 package org.fastcampus.post.repository;
 
+import jakarta.persistence.EntityManager;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.fastcampus.post.application.Interfaces.LikeRepository;
 import org.fastcampus.post.domain.Post;
 import org.fastcampus.post.domain.comment.Comment;
-import org.fastcampus.post.repository.entity.comment.CommentEntity;
 import org.fastcampus.post.repository.entity.like.LikeEntity;
-import org.fastcampus.post.repository.entity.post.PostEntity;
 import org.fastcampus.post.repository.jpa.JpaCommentRepository;
 import org.fastcampus.post.repository.jpa.JpaLikeRepository;
 import org.fastcampus.post.repository.jpa.JpaPostRepository;
@@ -17,6 +16,8 @@ import org.springframework.stereotype.Repository;
 @Repository
 @RequiredArgsConstructor
 public class LikeRepositoryImpl implements LikeRepository {
+
+    private final EntityManager entityManager;
 
     private final JpaPostRepository jpaPostRepository;
     private final JpaCommentRepository jpaCommentRepository;
@@ -32,8 +33,8 @@ public class LikeRepositoryImpl implements LikeRepository {
     @Transactional
     public void like(Post post, User user) {
         LikeEntity entity = new LikeEntity(post, user);
-        jpaLikeRepository.save(entity);
-        jpaPostRepository.save(new PostEntity(post));
+        entityManager.persist(entity);
+        jpaPostRepository.updateLikeCount(post.getId(), +1);
     }
 
     @Override
@@ -41,7 +42,7 @@ public class LikeRepositoryImpl implements LikeRepository {
     public void unlike(Post post, User user) {
         LikeEntity entity = new LikeEntity(post, user);
         jpaLikeRepository.deleteById(entity.getId());
-        jpaPostRepository.save(new PostEntity(post));
+        jpaPostRepository.updateLikeCount(post.getId(), -1);
     }
 
     @Override
@@ -53,14 +54,14 @@ public class LikeRepositoryImpl implements LikeRepository {
     @Override
     public void like(Comment comment, User user) {
         LikeEntity entity = new LikeEntity(comment, user);
-        jpaLikeRepository.save(entity);
-        jpaCommentRepository.save(new CommentEntity(comment));
+        entityManager.persist(entity);
+        jpaCommentRepository.updateLikeCounter(comment.getId(), +1);
     }
 
     @Override
     public void unlike(Comment comment, User user) {
         LikeEntity entity = new LikeEntity(comment, user);
         jpaLikeRepository.deleteById(entity.getId());
-        jpaCommentRepository.save(new CommentEntity(comment));
+        jpaCommentRepository.updateLikeCounter(comment.getId(), -1);
     }
 }
