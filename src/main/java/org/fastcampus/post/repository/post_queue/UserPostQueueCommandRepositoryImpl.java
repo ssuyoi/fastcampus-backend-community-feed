@@ -6,7 +6,6 @@ import lombok.RequiredArgsConstructor;
 import org.fastcampus.post.repository.entity.post.PostEntity;
 import org.fastcampus.post.repository.entity.post.UserPostQueueEntity;
 import org.fastcampus.post.repository.jpa.JpaPostRepository;
-import org.fastcampus.post.repository.jpa.JpaUserPostQueueRespository;
 import org.fastcampus.user.repository.entity.UserEntity;
 import org.fastcampus.user.repository.jpa.JpaUserRelationRepository;
 import org.springframework.stereotype.Repository;
@@ -17,7 +16,7 @@ public class UserPostQueueCommandRepositoryImpl implements UserPostQueueCommandR
 
     private final JpaPostRepository jpaPostRepository;
     private final JpaUserRelationRepository jpaUserRelationRepository;
-    private final JpaUserPostQueueRespository jpaUserPostQueueRespository;
+    private final UserQueueRedisRepository redisRepository;
 
     @Override
     @Transactional
@@ -28,25 +27,20 @@ public class UserPostQueueCommandRepositoryImpl implements UserPostQueueCommandR
         List<UserPostQueueEntity> userPostQueueEntities = followersIds.stream()
             .map(userId -> new UserPostQueueEntity(userId, postEntity.getId(), userEntity.getId()))
             .toList();
-
-        jpaUserPostQueueRespository.saveAll(userPostQueueEntities);
+        redisRepository.publishPostToFollowingList(postEntity, followersIds);
     }
 
     @Override
     @Transactional
     public void saveFollowPost(Long userId, Long targetId) {
-        List<Long> postIdList = jpaPostRepository.findAllPostIdByAuthorId(targetId);
+        List<PostEntity> postEntities = jpaPostRepository.findAllPostIdByAuthorId(targetId);
+        redisRepository.publicPostListToFollowerUser(postEntities, userId);
 
-        List<UserPostQueueEntity> userPostQueueEntityList = postIdList.stream()
-            .map(postId -> new UserPostQueueEntity(userId, postId, targetId))
-            .toList();
-
-        jpaUserPostQueueRespository.saveAll(userPostQueueEntityList);
     }
 
     @Override
     @Transactional
     public void deleteUnfollowPost(Long userId, Long targetId) {
-        jpaUserPostQueueRespository.deleteAllByUserIdAndAuthorId(userId, targetId);
+        redisRepository.deleteDeleteFeed(userId, targetId);
     }
 }
