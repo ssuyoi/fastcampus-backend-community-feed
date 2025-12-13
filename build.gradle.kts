@@ -35,6 +35,8 @@ dependencies {
     testImplementation("org.junit.jupiter:junit-jupiter")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
+    testImplementation("io.rest-assured:rest-assured:5.5.0")
+    runtimeOnly("com.h2database:h2")
 }
 
 tasks.test {
