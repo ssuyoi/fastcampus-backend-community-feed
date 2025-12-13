@@ -22,7 +22,7 @@ public class UserPostQueueQueryRepositoryImpl implements UserPostQueueQueryRepos
     private static final QUserEntity userEntity = QUserEntity.userEntity;
     private static final QLikeEntity likeEntity = QLikeEntity.likeEntity;
 
-    public List<GetPostContentResponseDto> getPostList(Long userId, Long lastContentId) {
+    public List<GetPostContentResponseDto> getContentResponse(Long userId, Long lastContentId) {
         return queryFactory
                 .select(
                         Projections.fields(
@@ -68,8 +68,4 @@ public class UserPostQueueQueryRepositoryImpl implements UserPostQueueQueryRepos
                 .and(likeEntity.id.userId.eq(userId));
     }
 
-    @Override
-    public List<GetPostContentResponseDto> getContentResponse(Long userId, Long lastPostId) {
-        return List.of();
-    }
 }

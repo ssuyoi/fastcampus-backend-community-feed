@@ -47,21 +47,21 @@ public class PostEntity extends TimeBaseEntity {
     @ColumnDefault("0")
     private int commentCount;
 
-
     public PostEntity(Post post) {
         this.id = post.getId();
         this.author = new UserEntity(post.getAuthor());
         this.content = post.getContent();
+        this.state = post.getState();
         this.likeCount = post.getLikeCount();
     }
 
     public Post toPost() {
         return Post.builder()
-            .id(id)
-            .author(author.toUser())
-            .content(new PostContent(content))
-            .state(state)
-            .likeCount(new PositiveIntegerCounter(likeCount))
-            .build();
+                .id(id)
+                .author(author.toUser())
+                .content(new PostContent(content))
+                .state(state)
+                .likeCount(new PositiveIntegerCounter(likeCount))
+                .build();
     }
 }

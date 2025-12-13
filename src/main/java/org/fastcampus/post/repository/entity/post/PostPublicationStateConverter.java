@@ -4,7 +4,7 @@ import jakarta.persistence.AttributeConverter;
 import org.fastcampus.post.domain.contant.PostPublicationState;
 
 public class PostPublicationStateConverter implements
-    AttributeConverter<PostPublicationState, String> {
+        AttributeConverter<PostPublicationState, String> {
 
     @Override
     public String convertToDatabaseColumn(PostPublicationState postPublicationState) {
