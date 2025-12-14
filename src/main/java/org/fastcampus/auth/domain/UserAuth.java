@@ -1,0 +1,39 @@
+package org.fastcampus.auth.domain;
+
+public class UserAuth {
+
+
+    private final Email email;
+    private final Password password;
+    private final UserRole role;
+    private Long userId;
+
+    public UserAuth(String email, String password, String role) {
+        this.email = Email.createEmail(email);
+        this.password = Password.createEncryptPassword(password);
+        this.role = UserRole.valueOf(role);
+    }
+
+    public UserAuth(String email, String password, String role, Long userId) {
+        this.email = Email.createEmail(email);
+        this.password = Password.createEncryptPassword(password);
+        this.role = UserRole.valueOf(role);
+        this.userId = userId;
+    }
+
+    public String getEmail() {
+        return email.getEmailText();
+    }
+
+    public String getPassword() {
+        return password.getEncryptedPassword();
+    }
+
+    public String getRole() {
+        return role.name();
+    }
+
+    public Long getUserId() {
+        return userId;
+    }
+}

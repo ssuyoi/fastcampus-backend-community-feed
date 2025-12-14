@@ -5,6 +5,7 @@ import static org.fastcampus.acceptance.steps.UserAcceptanceSteps.followUser;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
+import org.fastcampus.auth.repository.entity.EmailVerificationEntity;
 import org.fastcampus.user.application.dto.CreateUserRequestDto;
 import org.fastcampus.user.application.dto.FollowUserRequestDto;
 import org.springframework.stereotype.Component;
@@ -26,9 +27,24 @@ public class DataLoader {
     }
 
     public String getEmailToken(String email) {
-        return entityManager.createNativeQuery("SELECT token FROM community_email_verification WHERE email = ?", String.class)
-            .setParameter(1, email)
-            .getSingleResult()
-            .toString();
+        return entityManager
+                .createNativeQuery("SELECT token FROM community_email_verification WHERE email = ?", String.class)
+                .setParameter(1, email)
+                .getSingleResult()
+                .toString();
+    }
+
+    public boolean isEmailVerified(String email) {
+        return entityManager
+                .createQuery("SELECT isVerified FROM EmailVerificationEntity WHERE email = :email", Boolean.class)
+                .setParameter("email", email)
+                .getSingleResult();
+    }
+
+    public Long getUserId(String email) {
+        return entityManager
+                .createQuery("SELECT userId FROM UserAuthEntity WHERE email = :email", Long.class)
+                .setParameter("email", email)
+                .getSingleResult();
     }
 }
