@@ -3,16 +3,14 @@ package org.fastcampus.acceptance.auth;
 import static org.fastcampus.acceptance.steps.SignUpAcceptanceSteps.registerUser;
 import static org.fastcampus.acceptance.steps.SignUpAcceptanceSteps.requestSendEmail;
 import static org.fastcampus.acceptance.steps.SignUpAcceptanceSteps.requestVerifyEmail;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertNull;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.fastcampus.acceptance.utils.AcceptanceTestTemplate;
 import org.fastcampus.auth.application.dto.CreateUserAuthRequestDto;
 import org.fastcampus.auth.application.dto.SendEmailRequestDto;
-import org.fastcampus.user.application.dto.CreateUserRequestDto;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -53,71 +51,72 @@ class SignUpAcceptanceTest extends AcceptanceTestTemplate {
 
     @Test
     void givenSendEmail_whenVerifyEmail_thenEmailVerified() {
-        //given
+        // given
         requestSendEmail(new SendEmailRequestDto(email));
 
-        //when
+        // when
         String token = getEmailToken(email);
         Integer code = requestVerifyEmail(email, token);
 
-        //then
+        // then
         boolean isEmailVerified = isEmailVerified(email);
         assertEquals(0, code);
-        assertTrue( isEmailVerified);
+        assertTrue(isEmailVerified);
     }
 
     @Test
     void givenSendEmail_whenVerifyEmailWithWrongToken_thenEmailNotVerified() {
-        //given
+        // given
         requestSendEmail(new SendEmailRequestDto(email));
 
-        //when
+        // when
         Integer code = requestVerifyEmail(email, "wrongToken");
 
-        //then
+        // then
         boolean isEmailVerified = isEmailVerified(email);
         assertEquals(500, code);
-        assertFalse( isEmailVerified);
+        assertFalse(isEmailVerified);
     }
 
     @Test
     void givenSendEmailVerified_whenVerifyAgain_thenThrowError() {
-        //given
+        // given
         requestSendEmail(new SendEmailRequestDto(email));
         String token = getEmailToken(email);
         requestVerifyEmail(email, token);
 
-        //when
+        // when
         Integer code = requestVerifyEmail(email, token);
 
-        //then
+        // then
         assertEquals(500, code);
     }
 
     @Test
     void givenSendEmail_whenVerifyEmailWithWrongEmail_thenThrowError() {
-        //given
+        // given
         requestSendEmail(new SendEmailRequestDto(email));
 
-        //when
+        // when
         Integer code = requestVerifyEmail("wrongEmail", "token");
 
-        //then
+        // then
         assertEquals(500, code);
     }
 
     @Test
     void givenVerifiedEmail_whenRegister_thenUserRegistered() {
-        //given
+        // given
         requestSendEmail(new SendEmailRequestDto(email));
         String token = getEmailToken(email);
         requestVerifyEmail(email, token);
 
-        //when
-        CreateUserAuthRequestDto dto = new CreateUserAuthRequestDto(email, "password", "USER", "name", "profileImageUrl");
+        // when
+        CreateUserAuthRequestDto dto = new CreateUserAuthRequestDto(email, "password", "USER", "name",
+                "profileImageUrl");
         Integer code = registerUser(dto);
 
-        //then
+        // then
         assertEquals(0, code);
         Long userId = getUserId(email);
         assertEquals(1L, userId);
@@ -125,17 +124,16 @@ class SignUpAcceptanceTest extends AcceptanceTestTemplate {
 
     @Test
     void givenUnverifiedEmail_whenRegister_thenThrowError() {
-        //given
+        // given
         requestSendEmail(new SendEmailRequestDto(email));
 
-        //when
-        CreateUserAuthRequestDto dto = new CreateUserAuthRequestDto(email, "password", "USER", "name", "profileImageUrl");
+        // when
+        CreateUserAuthRequestDto dto = new CreateUserAuthRequestDto(email, "password", "USER", "name",
+                "profileImageUrl");
         Integer code = registerUser(dto);
 
-        //then
+        // then
         assertEquals(400, code);
     }
-
-
 
 }

@@ -21,7 +21,7 @@ public class DataLoader {
     public void loadData() {
         // user 1,2,3 생성
         for (int i = 1; i <= 3; i++) {
-            createUser(String.format("user"+ i + "@email.com"));
+            createUser(String.format("user" + i + "@test.com"));
         }
 
         followUser(new FollowUserRequestDto(1L, 2L));
@@ -45,7 +45,7 @@ public class DataLoader {
 
     public Long getUserId(String email) {
         return entityManager
-                .createQuery("SELECT userId FROM UserAuthEntity WHERE email = :email", Long.class)
+                .createQuery("SELECT u.userId FROM UserAuthEntity u WHERE u.email = :email", Long.class)
                 .setParameter("email", email)
                 .getSingleResult();
     }

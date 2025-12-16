@@ -30,6 +30,6 @@ class PasswordTest {
     @ParameterizedTest
     @NullAndEmptySource
     void givenPasswordIsNull_thenThrowError(String password) {
-        assertThrows(IllegalAccessError.class, () -> Password.createEncryptPassword(null));
+        assertThrows(IllegalArgumentException.class, () -> Password.createEncryptPassword(null));
     }
 }
