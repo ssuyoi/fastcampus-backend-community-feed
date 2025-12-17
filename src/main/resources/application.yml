@@ -3,7 +3,7 @@ spring:
       driver-class-name: com.mysql.cj.jdbc.Driver
       url: jdbc:mysql://localhost:3306/community_feed
       username: root
-      password:
+      password: rootroot
 
     jpa:
       show-sql: true
@@ -13,3 +13,4 @@ spring:
         hibernate:
           format_sql: true
       open-in-view: false
+secret-key : thisismysecretkeythisismysecretkeythisismysecretkeythisismysecretkeythisismysecretkeythisismysecretkey
