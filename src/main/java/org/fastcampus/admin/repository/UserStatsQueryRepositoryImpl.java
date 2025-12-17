@@ -1,11 +1,10 @@
 package org.fastcampus.admin.repository;
 
-import com.querydsl.core.QueryFactory;
 import com.querydsl.core.types.Projections;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
-import org.fastcampus.admin.ui.dto.GetDailyRegisterUserResponseDto;
+import org.fastcampus.admin.ui.dto.users.GetDailyRegisterUserResponseDto;
 import org.fastcampus.admin.ui.query.UserStatsQueryRepository;
 import org.fastcampus.common.TimeCalculator;
 import org.fastcampus.user.repository.entity.QUserEntity;
