@@ -42,4 +42,11 @@ public class AdminController {
         mv.addObject("totalCount", result.getTotalCount());
         return mv;
     }
+
+    @GetMapping("/login")
+    public ModelAndView login() {
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("login");
+        return mv;
+    }
 }
